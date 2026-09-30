@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "updated": "2026-10-01T00:00:00Z",
+  "plugins": [
+    {
+      "name": "js-replay",
+      "display_name": "JS 数据回灌(测试)",
+      "display_name_en": "JS Data Replay (test)",
+      "description": "数据回灌插件:记录每一帧,供回放/复现。",
+      "description_en": "Data replay plugin: records every frame for playback/reproduction.",
+      "category": "diagnosis",
+      "author": "bplc",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-replay/js-replay-1.0.0.zip",
+          "sha256": "5f504c07b8d146372ef2bc54c69712b9cad8e1215eec21ea81f1d928ca9aec66",
+          "size": 1407,
+          "min_app_version": "1.3.0"
+        },
+        {
+          "version": "1.1.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-replay/js-replay-1.1.0.zip",
+          "sha256": "97c12db28e94a78612bf3d81f232fb6d43c40e5ec1a4d25114eee39f504368c3",
+          "size": 1414,
+          "min_app_version": "1.3.0"
+        }
+      ]
+    },
+    {
+      "name": "js-topo",
+      "display_name": "JS 拓扑视图(测试)",
+      "display_name_en": "JS Topology View (test)",
+      "description": "拓扑图形插件:显示 CCO/STA 网络拓扑,支持点击选择节点。",
+      "description_en": "Topology graphics plugin: displays CCO/STA network topology with clickable nodes.",
+      "category": "graphics",
+      "author": "bplc",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.0.0.zip",
+          "sha256": "4136ba92ce8f6f44f3eb1ac31d2930dea015f745bb24dbca135c106008942321",
+          "size": 2393,
+          "min_app_version": "1.3.0"
+        },
+        {
+          "version": "1.1.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.1.0.zip",
+          "sha256": "30526f9c6bacbcf0627e482cc3b204e0a74add0358c5ef94ad497db54eb9bf99",
+          "size": 2400,
+          "min_app_version": "1.3.0"
+        }
+      ]
+    },
+    {
+      "name": "lua-diag",
+      "display_name": "Lua 帧诊断(测试)",
+      "display_name_en": "Lua Frame Diagnostics (test)",
+      "description": "诊断插件:检查帧长度、TEI、全零载荷等异常。",
+      "description_en": "Diagnostic plugin: checks frame length, TEI, all-zero payload anomalies.",
+      "category": "diagnosis",
+      "author": "bplc",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-diag/lua-diag-1.0.0.zip",
+          "sha256": "23cd8008affe75bb538475e62534098d744b86cbe89b8b07d3fe964a1f97315f",
+          "size": 1652,
+          "min_app_version": "1.3.0"
+        },
+        {
+          "version": "1.1.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-diag/lua-diag-1.1.0.zip",
+          "sha256": "1d76643d32b9e0267ba465c2af3f98491fc390f0d5bfd45e8f1d159518a0b11f",
+          "size": 1663,
+          "min_app_version": "1.3.0"
+        }
+      ]
+    },
+    {
+      "name": "lua-report",
+      "display_name": "Lua 统计报表(测试)",
+      "display_name_en": "Lua Statistics Report (test)",
+      "description": "报表插件:统计帧类型与 TEI 分布,生成 JSON 报表。",
+      "description_en": "Report plugin: statistics on frame types and TEI distribution, generates JSON report.",
+      "category": "report",
+      "author": "bplc",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-report/lua-report-1.0.0.zip",
+          "sha256": "cb33bce9fa8e679af86ee230e66f284d8991eef23a8d43ddf13d3d269af182cc",
+          "size": 1697,
+          "min_app_version": "1.3.0"
+        },
+        {
+          "version": "1.1.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-report/lua-report-1.1.0.zip",
+          "sha256": "9dd6ee92f8136e7a75c58da66f4bd61b4646eafe8d7ecfe385a06b9d89141e0d",
+          "size": 1704,
+          "min_app_version": "1.3.0"
+        }
+      ]
+    }
+  ]
+}

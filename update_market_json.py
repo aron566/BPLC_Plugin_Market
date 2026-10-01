@@ -8,15 +8,6 @@ BASE_URL = "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins"
 
 # 插件元数据
 PLUGINS_META = {
-    "js-replay": {
-        "display_name": "JS 数据回灌(测试)",
-        "display_name_en": "JS Data Replay (test)",
-        "description": "数据回灌插件:记录每一帧,供回放/复现。",
-        "description_en": "Data replay plugin: records every frame for playback/reproduction.",
-        "category": "diagnosis",
-        "author": "bplc",
-        "min_app_version": "1.3.0",
-    },
     "js-topo": {
         "display_name": "JS 拓扑视图(测试)",
         "display_name_en": "JS Topology View (test)",

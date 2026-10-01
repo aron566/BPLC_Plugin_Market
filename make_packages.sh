@@ -1,5 +1,5 @@
 #!/bin/bash
-# 为 4 个测试插件制作多版本发布包
+# 为 3 个测试插件制作多版本发布包
 set -e
 
 MARKET_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -10,7 +10,6 @@ mkdir -p "$PLUGINS_DIR"
 
 # 插件列表: 目录名|插件名|版本1|版本2
 PLUGINS=(
-    "js_replay|js-replay|1.0.0|1.1.0"
     "js_topo|js-topo|1.0.0|1.1.0"
     "lua_diag|lua-diag|1.0.0|1.1.0"
     "lua_report|lua-report|1.0.0|1.1.0"

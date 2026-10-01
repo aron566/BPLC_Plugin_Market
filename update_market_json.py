@@ -5,6 +5,13 @@ import json, os, hashlib
 MARKET_DIR = os.path.dirname(os.path.abspath(__file__))
 PLUGINS_DIR = os.path.join(MARKET_DIR, "plugins")
 BASE_URL = "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins"
+RAW_BASE = "https://raw.githubusercontent.com/aron566/BPLC_Plugin_Market/main"
+
+# 各版本更新时间(测试固件用固定日期,保证可复现)
+VERSION_DATES = {
+    "1.0.0": "2026-09-28",
+    "1.1.0": "2026-10-02",
+}
 
 # 插件元数据
 PLUGINS_META = {
@@ -65,6 +72,7 @@ for plugin_name, meta in PLUGINS_META.items():
             "sha256": sha256,
             "size": size,
             "min_app_version": meta["min_app_version"],
+            "updated_at": VERSION_DATES.get(ver, "2026-10-02"),
         })
     
     # 按版本排序
@@ -78,12 +86,13 @@ for plugin_name, meta in PLUGINS_META.items():
         "description_en": meta["description_en"],
         "category": meta["category"],
         "author": meta["author"],
+        "readme_url": f"{RAW_BASE}/readme/{plugin_name}.md",
         "versions": versions,
     })
 
 market = {
     "version": 1,
-    "updated": "2026-10-01T00:00:00Z",
+    "updated": "2026-10-02T00:00:00Z",
     "plugins": plugins,
 }
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-01T00:00:00Z",
+  "updated": "2026-10-02T00:00:00Z",
   "plugins": [
     {
       "name": "js-topo",
@@ -10,20 +10,23 @@
       "description_en": "Topology graphics plugin: displays CCO/STA network topology with clickable nodes.",
       "category": "graphics",
       "author": "bplc",
+      "readme_url": "https://raw.githubusercontent.com/aron566/BPLC_Plugin_Market/main/readme/js-topo.md",
       "versions": [
         {
           "version": "1.0.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.0.0.zip",
-          "sha256": "4136ba92ce8f6f44f3eb1ac31d2930dea015f745bb24dbca135c106008942321",
-          "size": 2393,
-          "min_app_version": "1.3.0"
+          "sha256": "e43bcfd16e729dd5d5d88aa081b39598498bf86172782c6285518567f2b23483",
+          "size": 11234,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-09-28"
         },
         {
           "version": "1.1.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.1.0.zip",
-          "sha256": "30526f9c6bacbcf0627e482cc3b204e0a74add0358c5ef94ad497db54eb9bf99",
-          "size": 2400,
-          "min_app_version": "1.3.0"
+          "sha256": "028dd35b2d4da572752e09b8fac08fb16e2117232cc26490d3fce9d5e815a1dd",
+          "size": 11234,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02"
         }
       ]
     },
@@ -35,20 +38,23 @@
       "description_en": "Diagnostic plugin: checks frame length, TEI, all-zero payload anomalies.",
       "category": "diagnosis",
       "author": "bplc",
+      "readme_url": "https://raw.githubusercontent.com/aron566/BPLC_Plugin_Market/main/readme/lua-diag.md",
       "versions": [
         {
           "version": "1.0.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-diag/lua-diag-1.0.0.zip",
-          "sha256": "23cd8008affe75bb538475e62534098d744b86cbe89b8b07d3fe964a1f97315f",
-          "size": 1652,
-          "min_app_version": "1.3.0"
+          "sha256": "3917feb36a03c8895fef0f1a5c10c4e518cfe0aa0f457c9042e2753f5bbe6679",
+          "size": 2678,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-09-28"
         },
         {
           "version": "1.1.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-diag/lua-diag-1.1.0.zip",
-          "sha256": "1d76643d32b9e0267ba465c2af3f98491fc390f0d5bfd45e8f1d159518a0b11f",
-          "size": 1663,
-          "min_app_version": "1.3.0"
+          "sha256": "4833993581fbd82360c3d838ca960fb1c9c4ee95aa29ff151dec8cdad3a3d974",
+          "size": 2676,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02"
         }
       ]
     },
@@ -60,20 +66,23 @@
       "description_en": "Report plugin: statistics on frame types and TEI distribution, generates JSON report.",
       "category": "report",
       "author": "bplc",
+      "readme_url": "https://raw.githubusercontent.com/aron566/BPLC_Plugin_Market/main/readme/lua-report.md",
       "versions": [
         {
           "version": "1.0.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-report/lua-report-1.0.0.zip",
-          "sha256": "cb33bce9fa8e679af86ee230e66f284d8991eef23a8d43ddf13d3d269af182cc",
-          "size": 1697,
-          "min_app_version": "1.3.0"
+          "sha256": "fcda7af67fdacd3145bddbe41197ae75fc4b262c712f2f71a1bd1ace4960503c",
+          "size": 2614,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-09-28"
         },
         {
           "version": "1.1.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/lua-report/lua-report-1.1.0.zip",
-          "sha256": "9dd6ee92f8136e7a75c58da66f4bd61b4646eafe8d7ecfe385a06b9d89141e0d",
-          "size": 1704,
-          "min_app_version": "1.3.0"
+          "sha256": "301c564fd4d5ce87183d501e5163799a042b693ed9d38463aa4f8851b8abf0d4",
+          "size": 2614,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02"
         }
       ]
     }

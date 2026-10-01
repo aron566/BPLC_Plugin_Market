@@ -53,8 +53,11 @@ with open('$ver_dir/plugin.json', 'w') as f:
 "
         fi
         
-        # 创建 README
-        cat > "$ver_dir/README.md" << REOF
+        # 创建 README:优先用市场仓库 readme/<插件名>.md,缺失则生成桩
+        if [ -f "$MARKET_DIR/readme/$plugin_name.md" ]; then
+            cp "$MARKET_DIR/readme/$plugin_name.md" "$ver_dir/README.md"
+        else
+            cat > "$ver_dir/README.md" << REOF
 # $plugin_name v$ver
 
 测试插件,用于验证 BPLC 插件系统。
@@ -63,6 +66,7 @@ with open('$ver_dir/plugin.json', 'w') as f:
 
 - v$ver: 当前版本
 REOF
+        fi
         
         # 打包为 zip
         zip_name="${plugin_name}-${ver}.zip"

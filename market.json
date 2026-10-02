@@ -18,7 +18,8 @@
           "sha256": "e43bcfd16e729dd5d5d88aa081b39598498bf86172782c6285518567f2b23483",
           "size": 11234,
           "min_app_version": "1.3.0",
-          "updated_at": "2026-09-28"
+          "updated_at": "2026-09-28",
+          "platforms": []
         },
         {
           "version": "1.1.0",
@@ -26,7 +27,8 @@
           "sha256": "028dd35b2d4da572752e09b8fac08fb16e2117232cc26490d3fce9d5e815a1dd",
           "size": 11234,
           "min_app_version": "1.3.0",
-          "updated_at": "2026-10-02"
+          "updated_at": "2026-10-02",
+          "platforms": []
         }
       ]
     },
@@ -46,7 +48,8 @@
           "sha256": "3917feb36a03c8895fef0f1a5c10c4e518cfe0aa0f457c9042e2753f5bbe6679",
           "size": 2678,
           "min_app_version": "1.3.0",
-          "updated_at": "2026-09-28"
+          "updated_at": "2026-09-28",
+          "platforms": []
         },
         {
           "version": "1.1.0",
@@ -54,7 +57,8 @@
           "sha256": "4833993581fbd82360c3d838ca960fb1c9c4ee95aa29ff151dec8cdad3a3d974",
           "size": 2676,
           "min_app_version": "1.3.0",
-          "updated_at": "2026-10-02"
+          "updated_at": "2026-10-02",
+          "platforms": []
         }
       ]
     },
@@ -74,7 +78,8 @@
           "sha256": "fcda7af67fdacd3145bddbe41197ae75fc4b262c712f2f71a1bd1ace4960503c",
           "size": 2614,
           "min_app_version": "1.3.0",
-          "updated_at": "2026-09-28"
+          "updated_at": "2026-09-28",
+          "platforms": []
         },
         {
           "version": "1.1.0",
@@ -82,7 +87,31 @@
           "sha256": "301c564fd4d5ce87183d501e5163799a042b693ed9d38463aa4f8851b8abf0d4",
           "size": 2614,
           "min_app_version": "1.3.0",
-          "updated_at": "2026-10-02"
+          "updated_at": "2026-10-02",
+          "platforms": []
+        }
+      ]
+    },
+    {
+      "name": "cpp-coverage",
+      "display_name": "C++ 信号覆盖",
+      "display_name_en": "C++ Signal Coverage",
+      "description": "信号覆盖插件:全网节点在一张图上展示,每节点自带覆盖圈,圈内为其邻居表覆盖范围,节点颜色表示通信成功率。点击节点可切换选中。",
+      "description_en": "Signal coverage plugin: all nodes on one map, each with its own coverage circle from its neighbor table; node colors show comm success rates. Click a node to select.",
+      "category": "graphics",
+      "author": "BPLC Team",
+      "readme_url": "https://raw.githubusercontent.com/aron566/BPLC_Plugin_Market/main/readme/cpp-coverage.md",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.0.0.zip",
+          "sha256": "52281fd8390c8c58bcfb73464d314b10e952aa2e7da0ec6095bdb807a6e54cfd",
+          "size": 55715,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02",
+          "platforms": [
+            "linux-x86_64"
+          ]
         }
       ]
     }

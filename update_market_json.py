@@ -42,6 +42,22 @@ PLUGINS_META = {
         "author": "bplc",
         "min_app_version": "1.3.0",
     },
+    "cpp-coverage": {
+        "display_name": "C++ 信号覆盖",
+        "display_name_en": "C++ Signal Coverage",
+        "description": "信号覆盖插件:全网节点在一张图上展示,每节点自带覆盖圈,圈内为其邻居表覆盖范围,节点颜色表示通信成功率。点击节点可切换选中。",
+        "description_en": "Signal coverage plugin: all nodes on one map, each with its own coverage circle from its neighbor table; node colors show comm success rates. Click a node to select.",
+        "category": "graphics",
+        "author": "BPLC Team",
+        "min_app_version": "1.3.0",
+        # 版本→适用平台(缺省=全平台);native 插件按实际构建产物标注
+        "version_platforms": {
+            "1.0.0": ["linux-x86_64"],
+        },
+        "version_dates": {
+            "1.0.0": "2026-10-02",
+        },
+    },
 }
 
 plugins = []
@@ -72,7 +88,9 @@ for plugin_name, meta in PLUGINS_META.items():
             "sha256": sha256,
             "size": size,
             "min_app_version": meta["min_app_version"],
-            "updated_at": VERSION_DATES.get(ver, "2026-10-02"),
+            "updated_at": meta.get("version_dates", {}).get(
+                ver, VERSION_DATES.get(ver, "2026-10-02")),
+            "platforms": meta.get("version_platforms", {}).get(ver, []),
         })
     
     # 按版本排序

@@ -15,6 +15,68 @@ PLUGINS=(
     "lua_report|lua-report|1.0.0|1.1.0"
 )
 
+# ---- native 插件:cpp-coverage(需编译出各平台动态库) ----
+# 约定:构建产物目录 $BUILD_TMP/cpp_coverage-<ver>/ 下含 plugin.json + 平台库
+build_native_cpp_coverage() {
+    local ver="$1" out_dir="$2"
+    local src_path="$EXAMPLES_DIR/cpp_coverage"
+    local build_dir="/tmp/natbuild_cpp_coverage_${ver}"
+    rm -rf "$build_dir"
+    mkdir -p "$build_dir"
+    local qmake_bin=""
+    if command -v qmake6 >/dev/null 2>&1; then qmake_bin=qmake6;
+    elif command -v qmake >/dev/null 2>&1; then qmake_bin=qmake; fi
+    if [ -z "$qmake_bin" ]; then
+        echo "SKIP native build: qmake not found" >&2
+        return 1
+    fi
+    (cd "$build_dir" && "$qmake_bin" "$src_path/cpp_coverage.pro" CONFIG+=release >/dev/null \
+        && make -j"$(nproc)" >/dev/null) || return 1
+    mkdir -p "$out_dir"
+    # Linux 产物
+    if [ -f "$build_dir/libcpp_coverage.so" ]; then
+        cp "$build_dir/libcpp_coverage.so" "$out_dir/"
+    fi
+    # Windows 产物(本机无法交叉编译,CI 产物手动放入后可被打包)
+    if [ -f "$build_dir/release/cpp_coverage.dll" ]; then
+        cp "$build_dir/release/cpp_coverage.dll" "$out_dir/"
+    fi
+    cp "$src_path/plugin.json" "$out_dir/"
+    rm -rf "$build_dir"
+    return 0
+}
+
+package_cpp_coverage() {
+    local ver="1.0.0"
+    local plugin_name="cpp-coverage"
+    local plugin_dir="$PLUGINS_DIR/$plugin_name"
+    mkdir -p "$plugin_dir"
+    local ver_dir="/tmp/pkg_${plugin_name}_${ver}"
+    rm -rf "$ver_dir"
+    mkdir -p "$ver_dir"
+    if ! build_native_cpp_coverage "$ver" "$ver_dir"; then
+        echo "SKIP: $plugin_name native build failed"
+        rm -rf "$ver_dir"
+        return 1
+    fi
+    if [ ! -f "$ver_dir/libcpp_coverage.so" ] && [ ! -f "$ver_dir/cpp_coverage.dll" ]; then
+        echo "SKIP: $plugin_name no binary produced"
+        rm -rf "$ver_dir"
+        return 1
+    fi
+    # README
+    if [ -f "$MARKET_DIR/readme/$plugin_name.md" ]; then
+        cp "$MARKET_DIR/readme/$plugin_name.md" "$ver_dir/README.md"
+    fi
+    local zip_name="${plugin_name}-${ver}.zip"
+    (cd "$ver_dir" && zip -q -r "$plugin_dir/$zip_name" .)
+    local sha256
+    sha256=$(sha256sum "$plugin_dir/$zip_name" | cut -d' ' -f1)
+    echo "$plugin_name v$ver: $sha256"
+    echo "$sha256" > "$plugin_dir/${zip_name}.sha256"
+    rm -rf "$ver_dir"
+}
+
 for entry in "${PLUGINS[@]}"; do
     IFS='|' read -r src_dir plugin_name v1 v2 <<< "$entry"
     src_path="$EXAMPLES_DIR/$src_dir"
@@ -80,6 +142,10 @@ REOF
         rm -rf "$ver_dir"
     done
 done
+
+echo ""
+echo "--- native plugins ---"
+package_cpp_coverage || echo "cpp-coverage packaging skipped"
 
 echo ""
 echo "All packages created in $PLUGINS_DIR"

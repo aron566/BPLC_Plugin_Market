@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate market.json with real SHA256 and URLs."""
-import json, os, hashlib
+import json, os, hashlib, zipfile
 
 MARKET_DIR = os.path.dirname(os.path.abspath(__file__))
 PLUGINS_DIR = os.path.join(MARKET_DIR, "plugins")
@@ -12,6 +12,34 @@ VERSION_DATES = {
     "1.0.0": "2026-09-28",
     "1.1.0": "2026-10-02",
 }
+
+def detect_platforms(zip_path):
+    """从包内二进制推断适用平台。
+
+    仅 runtime=native 的插件返回非空列表;脚本插件返回 [] (=全平台)。
+    一个包可带多个平台二进制(如 libcpp_coverage.so + cpp_coverage.dll),
+    此时返回多个平台 ID。显式配置 version_platforms 时优先采用配置值。
+    """
+    try:
+        with zipfile.ZipFile(zip_path) as z:
+            names = z.namelist()
+            try:
+                m = json.loads(z.read("plugin.json").decode("utf-8"))
+            except KeyError:
+                return []
+            if m.get("runtime") != "native":
+                return []
+            plats = []
+            if any(n.endswith(".dll") for n in names):
+                plats.append("windows-x86_64")
+            if any(n.endswith(".so") for n in names):
+                plats.append("linux-x86_64")
+            # .dylib 无法从扩展名区分 arm64/x86_64,暂不自动推断(可用配置覆盖)
+            return plats
+    except Exception as e:
+        print(f"WARN: detect_platforms {zip_path}: {e}")
+        return []
+
 
 # 插件元数据
 PLUGINS_META = {
@@ -50,10 +78,9 @@ PLUGINS_META = {
         "category": "graphics",
         "author": "BPLC Team",
         "min_app_version": "1.3.0",
-        # 版本→适用平台(缺省=全平台);native 插件按实际构建产物标注
-        "version_platforms": {
-            "1.0.0": ["linux-x86_64"],
-        },
+        # version_platforms 缺省时从包内二进制自动推断(见 detect_platforms);
+        # 如需覆盖可按版本显式指定,如 "1.0.0": ["linux-x86_64"]
+        "version_platforms": {},
         "version_dates": {
             "1.0.0": "2026-10-02",
         },
@@ -82,6 +109,11 @@ for plugin_name, meta in PLUGINS_META.items():
         size = os.path.getsize(fpath)
         url = f"{BASE_URL}/{plugin_name}/{fname}"
         
+        # 平台:显式配置优先,否则 native 插件从包内二进制自动推断,
+        # 脚本插件为空(=全平台)
+        plats = meta.get("version_platforms", {}).get(ver)
+        if plats is None:
+            plats = detect_platforms(fpath)
         versions.append({
             "version": ver,
             "url": url,
@@ -90,7 +122,7 @@ for plugin_name, meta in PLUGINS_META.items():
             "min_app_version": meta["min_app_version"],
             "updated_at": meta.get("version_dates", {}).get(
                 ver, VERSION_DATES.get(ver, "2026-10-02")),
-            "platforms": meta.get("version_platforms", {}).get(ver, []),
+            "platforms": plats,
         })
     
     # 按版本排序

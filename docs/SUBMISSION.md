@@ -16,7 +16,7 @@
 | author | 否 | 作者 |
 | protocol_id | 是 | 协议 ID (大写, 下划线) |
 | runtime | 是 | js / lua / native |
-| entry | 是 | 入口文件 (parser.js / parser.lua / libxxx.so) |
+| entry | 是 | 入口文件。脚本插件:确切文件名(parser.js)。native 插件:裸库名(如 `cpp_coverage`,客户端按平台解析为 `libcpp_coverage.so` / `cpp_coverage.dll`);显式文件名(`*.so`/`*.dll`)仍兼容 |
 | graphics | 否 | 是否提供图形能力 (默认 false) |
 | id | 否 | 兼容字段, 同 name |
 
@@ -30,6 +30,20 @@ js-echo-1.0.0.zip
 ├── parser.js
 └── README.md
 ```
+
+native 插件:一个包可带多个平台二进制(多平台发布),entry 用裸库名:
+
+```
+cpp-coverage-1.0.0.zip
+├── plugin.json          # entry: "cpp_coverage"
+├── libcpp_coverage.so   # linux-x86_64
+├── cpp_coverage.dll     # windows-x86_64 (有则带上)
+└── README.md
+```
+
+feed 的 `platforms` 由 `update_market_json.py` 从包内二进制自动推断
+(`.so`→linux-x86_64,`.dll`→windows-x86_64);脚本插件为空(=全平台)。
+如需覆盖,在 `PLUGINS_META[<name>]["version_platforms"]` 中按版本显式指定。
 
 ## 审核清单
 

@@ -37,13 +37,20 @@ build_native_cpp_coverage() {
     if [ -f "$build_dir/libcpp_coverage.so" ]; then
         cp "$build_dir/libcpp_coverage.so" "$out_dir/"
     fi
-    # Windows 产物(本机无法交叉编译,CI 产物手动放入后可被打包)
-    if [ -f "$build_dir/release/cpp_coverage.dll" ]; then
-        cp "$build_dir/release/cpp_coverage.dll" "$out_dir/"
-    fi
     cp "$src_path/plugin.json" "$out_dir/"
     rm -rf "$build_dir"
     return 0
+}
+
+# Windows 预编译 dll 捆入(本机无法交叉编译 Qt 插件):
+# CPP_COVERAGE_WIN_DLL 指向已编好的 cpp_coverage.dll( CI / Windows 真机产物),
+# 为空则只打 Linux 包。包内可同时含 .so + .dll,feed 平台自动推断。
+bundle_win_dll() {
+    local out_dir="$1"
+    if [ -n "$CPP_COVERAGE_WIN_DLL" ] && [ -f "$CPP_COVERAGE_WIN_DLL" ]; then
+        cp "$CPP_COVERAGE_WIN_DLL" "$out_dir/cpp_coverage.dll"
+        echo "bundled windows dll: $CPP_COVERAGE_WIN_DLL" >&2
+    fi
 }
 
 package_cpp_coverage() {
@@ -64,6 +71,8 @@ package_cpp_coverage() {
         rm -rf "$ver_dir"
         return 1
     fi
+    # 多平台:捆入 Windows 预编译 dll(若提供)
+    bundle_win_dll "$ver_dir"
     # README
     if [ -f "$MARKET_DIR/readme/$plugin_name.md" ]; then
         cp "$MARKET_DIR/readme/$plugin_name.md" "$ver_dir/README.md"

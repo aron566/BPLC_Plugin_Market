@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-02T00:00:00Z",
+  "updated": "2026-10-03T00:00:00Z",
   "plugins": [
     {
       "name": "js-topo",
@@ -28,6 +28,15 @@
           "size": 11234,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-02",
+          "platforms": []
+        },
+        {
+          "version": "1.2.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.2.0.zip",
+          "sha256": "26306876ac5866d0225676ad6c137f10912de7a28f78a49f24abe953615dd1bb",
+          "size": 12407,
+          "min_app_version": "1.3.1",
+          "updated_at": "2026-10-03",
           "platforms": []
         }
       ]

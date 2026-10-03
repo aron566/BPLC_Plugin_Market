@@ -83,6 +83,7 @@ PLUGINS_META = {
         "version_platforms": {},
         "version_dates": {
             "1.0.0": "2026-10-02",
+            "1.1.0": "2026-10-03",
         },
     },
 }

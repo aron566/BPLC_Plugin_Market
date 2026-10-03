@@ -54,7 +54,7 @@ bundle_win_dll() {
 }
 
 package_cpp_coverage() {
-    local ver="1.0.0"
+    local ver="${1:-1.0.0}"
     local plugin_name="cpp-coverage"
     local plugin_dir="$PLUGINS_DIR/$plugin_name"
     mkdir -p "$plugin_dir"
@@ -154,7 +154,7 @@ done
 
 echo ""
 echo "--- native plugins ---"
-package_cpp_coverage || echo "cpp-coverage packaging skipped"
+package_cpp_coverage 1.1.0 || echo "cpp-coverage packaging skipped"
 
 echo ""
 echo "All packages created in $PLUGINS_DIR"

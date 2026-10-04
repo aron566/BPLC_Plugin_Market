@@ -143,14 +143,14 @@
         {
           "version": "1.1.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.1.0.zip",
-          "sha256": "9c777b89336fcb8ad76ec7c7425a126b68edf22bbf786ed2ad23a3bfc8f52830",
-          "size": 55741,
+          "sha256": "80251652a60f3434032122b41636583e6a5d96c5969f5198ff253dc87d8e5029",
+          "size": 55948,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-03",
           "platforms": [
             "linux-x86_64"
           ],
-          "abi": "qt6.4.2-gcc-x64"
+          "abi": "qt6-gcc-x64"
         },
         {
           "version": "1.2.0",
@@ -162,7 +162,7 @@
           "platforms": [
             "windows-x86_64"
           ],
-          "abi": "qt6.10.1-mingw-x64"
+          "abi": "qt6-mingw-x64"
         },
         {
           "version": "1.3.0",
@@ -174,7 +174,7 @@
           "platforms": [
             "windows-x86_64"
           ],
-          "abi": "qt6.10.1-mingw-x64"
+          "abi": "qt6-mingw-x64"
         }
       ]
     }

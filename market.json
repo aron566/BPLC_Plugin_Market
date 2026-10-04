@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-04T00:00:00Z",
+  "updated": "2026-10-02T00:00:00Z",
   "plugins": [
     {
       "name": "js-topo",
@@ -19,7 +19,8 @@
           "size": 11234,
           "min_app_version": "1.3.0",
           "updated_at": "2026-09-28",
-          "platforms": []
+          "platforms": [],
+          "abi": ""
         },
         {
           "version": "1.1.0",
@@ -28,25 +29,28 @@
           "size": 11234,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-02",
-          "platforms": []
+          "platforms": [],
+          "abi": ""
         },
         {
           "version": "1.2.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.2.0.zip",
           "sha256": "baf7b8136eafa03cdfe915d6b8ad21cb8ac239c543e00bcd1988497c23ce6158",
           "size": 13942,
-          "min_app_version": "1.3.1",
-          "updated_at": "2026-10-03",
-          "platforms": []
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02",
+          "platforms": [],
+          "abi": ""
         },
         {
           "version": "1.3.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.3.0.zip",
           "sha256": "5bbe31d7970e57b473ae1bec68d63514eaca65b0ed727672c306613e4fbf133e",
           "size": 14110,
-          "min_app_version": "1.3.1",
-          "updated_at": "2026-10-03",
-          "platforms": []
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02",
+          "platforms": [],
+          "abi": ""
         }
       ]
     },
@@ -67,7 +71,8 @@
           "size": 2678,
           "min_app_version": "1.3.0",
           "updated_at": "2026-09-28",
-          "platforms": []
+          "platforms": [],
+          "abi": ""
         },
         {
           "version": "1.1.0",
@@ -76,7 +81,8 @@
           "size": 2676,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-02",
-          "platforms": []
+          "platforms": [],
+          "abi": ""
         }
       ]
     },
@@ -97,7 +103,8 @@
           "size": 2614,
           "min_app_version": "1.3.0",
           "updated_at": "2026-09-28",
-          "platforms": []
+          "platforms": [],
+          "abi": ""
         },
         {
           "version": "1.1.0",
@@ -106,7 +113,8 @@
           "size": 2614,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-02",
-          "platforms": []
+          "platforms": [],
+          "abi": ""
         }
       ]
     },
@@ -129,29 +137,32 @@
           "updated_at": "2026-10-02",
           "platforms": [
             "linux-x86_64"
-          ]
+          ],
+          "abi": ""
         },
         {
           "version": "1.1.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.1.0.zip",
-          "sha256": "023d0aff758101d575a93cb0767fca38ba784d57307d80839935ea5f7e074f2e",
-          "size": 55720,
+          "sha256": "9c777b89336fcb8ad76ec7c7425a126b68edf22bbf786ed2ad23a3bfc8f52830",
+          "size": 55741,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-03",
           "platforms": [
             "linux-x86_64"
-          ]
+          ],
+          "abi": "qt6.4.2-gcc-x64"
         },
         {
           "version": "1.2.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.2.0.zip",
           "sha256": "4d1c237a781bf73f84303ede18cb4f0f85051380f65f32081652d0e7279f21d6",
           "size": 48428,
-          "min_app_version": "1.3.1",
-          "updated_at": "2026-10-04",
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-02",
           "platforms": [
             "windows-x86_64"
-          ]
+          ],
+          "abi": ""
         }
       ]
     }

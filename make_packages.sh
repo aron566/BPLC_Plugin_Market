@@ -36,8 +36,25 @@ build_native_cpp_coverage() {
     # Linux 产物
     if [ -f "$build_dir/libcpp_coverage.so" ]; then
         cp "$build_dir/libcpp_coverage.so" "$out_dir/"
+        # 注入 Linux ABI(qmake 报告的 Qt 版本 + gcc),覆盖源码 plugin.json 里
+        # 可能的 Windows abi,保证与 Linux 主程序 plugin_host_abi() 一致
+        local qt_ver
+        qt_ver=$("$qmake_bin" -query QT_VERSION 2>/dev/null)
+        if [ -n "$qt_ver" ]; then
+            python3 - "$src_path/plugin.json" "$out_dir/plugin.json" "qt${qt_ver}-gcc-x64" <<'EOF'
+import json, sys
+src, dst, abi = sys.argv[1], sys.argv[2], sys.argv[3]
+d = json.load(open(src))
+d["abi"] = abi
+json.dump(d, open(dst, "w"), ensure_ascii=False, indent=2)
+print(f"linux abi injected: {abi}", file=sys.stderr)
+EOF
+        else
+            cp "$src_path/plugin.json" "$out_dir/"
+        fi
+    else
+        cp "$src_path/plugin.json" "$out_dir/"
     fi
-    cp "$src_path/plugin.json" "$out_dir/"
     rm -rf "$build_dir"
     return 0
 }

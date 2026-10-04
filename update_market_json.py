@@ -115,6 +115,18 @@ for plugin_name, meta in PLUGINS_META.items():
         plats = meta.get("version_platforms", {}).get(ver)
         if plats is None:
             plats = detect_platforms(fpath)
+        # ABI:从包内 plugin.json 读取(字符串或按平台对象),原样写入 feed;
+        # 为空表示脚本插件(ABI 无关)
+        abi = ""
+        try:
+            with zipfile.ZipFile(fpath) as z:
+                names = z.namelist()
+                pj_name = "plugin.json" if "plugin.json" in names else None
+                if pj_name:
+                    pj = json.load(z.open(pj_name))
+                    abi = pj.get("abi", "")
+        except Exception as e:
+            print(f"  warn: read abi from {fname} failed: {e}")
         versions.append({
             "version": ver,
             "url": url,
@@ -124,6 +136,7 @@ for plugin_name, meta in PLUGINS_META.items():
             "updated_at": meta.get("version_dates", {}).get(
                 ver, VERSION_DATES.get(ver, "2026-10-02")),
             "platforms": plats,
+            "abi": abi,
         })
     
     # 按版本排序

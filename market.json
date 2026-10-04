@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-03T00:00:00Z",
+  "updated": "2026-10-04T00:00:00Z",
   "plugins": [
     {
       "name": "js-topo",
@@ -145,8 +145,8 @@
         {
           "version": "1.2.0",
           "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.2.0.zip",
-          "sha256": "55fe7f38e695f937f768a90e10b3946bb1e02569bae3cbc4ebca06737c10ef07",
-          "size": 48058,
+          "sha256": "4d1c237a781bf73f84303ede18cb4f0f85051380f65f32081652d0e7279f21d6",
+          "size": 48428,
           "min_app_version": "1.3.1",
           "updated_at": "2026-10-04",
           "platforms": [

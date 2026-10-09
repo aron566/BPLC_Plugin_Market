@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-06T00:00:00Z",
+  "updated": "2026-10-02T00:00:00Z",
   "plugins": [
     {
       "name": "js-topo",
@@ -188,6 +188,21 @@
           "updated_at": "2026-10-06",
           "platforms": [
             "windows-x86_64"
+          ],
+          "abi": {
+            "windows-x86_64": "qt6-mingw-x64-l23003f800280158",
+            "linux-x86_64": "qt6-gcc-x64-l23003f800280158"
+          }
+        },
+        {
+          "version": "1.4.6",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.4.6.zip",
+          "sha256": "e054d8613730a88e444add6add0f19969fc20c630d4364574dc0ea9ddef9da3f",
+          "size": 93050,
+          "min_app_version": "1.4.0",
+          "updated_at": "2026-10-10",
+          "platforms": [
+            "linux-x86_64"
           ],
           "abi": {
             "windows-x86_64": "qt6-mingw-x64-l23003f800280158",

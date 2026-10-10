@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-06T00:00:00Z",
+  "updated": "2026-10-10",
   "plugins": [
     {
       "name": "js-topo",
@@ -49,6 +49,16 @@
           "size": 14110,
           "min_app_version": "1.3.0",
           "updated_at": "2026-10-02",
+          "platforms": [],
+          "abi": ""
+        },
+        {
+          "version": "1.4.0",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/js-topo/js-topo-1.4.0.zip",
+          "sha256": "22931719af1832bf6b42fc1caf51a7b091b305aea68970cea8437c90422220e9",
+          "size": 14666,
+          "min_app_version": "1.3.0",
+          "updated_at": "2026-10-10",
           "platforms": [],
           "abi": ""
         }
@@ -186,6 +196,21 @@
           "size": 73048,
           "min_app_version": "1.3.1",
           "updated_at": "2026-10-06",
+          "platforms": [
+            "windows-x86_64"
+          ],
+          "abi": {
+            "windows-x86_64": "qt6-mingw-x64-l23003f800280158",
+            "linux-x86_64": "qt6-gcc-x64-l23003f800280158"
+          }
+        },
+        {
+          "version": "1.4.7",
+          "url": "https://github.com/aron566/BPLC_Plugin_Market/raw/main/plugins/cpp-coverage/cpp-coverage-1.4.7.zip",
+          "sha256": "fd0325a50c190d4b2af0d9f51f7ed74449c614d90a9d46c7c2cb9faa72afaadc",
+          "size": 80185,
+          "min_app_version": "1.3.1",
+          "updated_at": "2026-10-10",
           "platforms": [
             "windows-x86_64"
           ],

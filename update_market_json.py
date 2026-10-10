@@ -84,6 +84,19 @@ PLUGINS_META = {
         "version_dates": {
             "1.0.0": "2026-10-02",
             "1.1.0": "2026-10-03",
+            "1.2.0": "2026-10-02",
+            "1.3.0": "2026-10-04",
+            "1.4.5": "2026-10-06",
+            "1.4.6": "2026-10-10",
+        },
+        # 1.2.0 包内 plugin.json 无 abi 字段(feed 值人工确认);
+        # 1.3.0 发布时 min_app_version 为 1.3.1;
+        # 1.4.6 需带布局指纹 ABI 的宿主,最低 app 1.4.0。
+        "version_overrides": {
+            "1.2.0": {"abi": "qt6-mingw-x64"},
+            "1.3.0": {"min_app_version": "1.3.1"},
+            "1.4.5": {"min_app_version": "1.3.1"},
+            "1.4.6": {"min_app_version": "1.4.0"},
         },
     },
 }
@@ -127,7 +140,7 @@ for plugin_name, meta in PLUGINS_META.items():
                     abi = pj.get("abi", "")
         except Exception as e:
             print(f"  warn: read abi from {fname} failed: {e}")
-        versions.append({
+        entry = {
             "version": ver,
             "url": url,
             "sha256": sha256,
@@ -137,7 +150,12 @@ for plugin_name, meta in PLUGINS_META.items():
                 ver, VERSION_DATES.get(ver, "2026-10-02")),
             "platforms": plats,
             "abi": abi,
-        })
+        }
+        # 按版本覆盖个别字段:历史包的 plugin.json 可能缺 abi 等字段,
+        # feed 里人工确认过的值以覆盖为准,避免重生成时被默认值冲掉。
+        for k, v in meta.get("version_overrides", {}).get(ver, {}).items():
+            entry[k] = v
+        versions.append(entry)
     
     # 按版本排序
     versions.sort(key=lambda v: v["version"])

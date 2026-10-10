@@ -34,28 +34,13 @@ build_native_cpp_coverage() {
         && make -j"$(nproc)" >/dev/null) || return 1
     mkdir -p "$out_dir"
     # Linux 产物
+    # plugin.json 原样复制:abi 已由源码维护为按平台对象(含布局指纹,
+    # 与 plugin_host_abi() 精确比对),打包侧不得覆盖为旧版纯字符串 ABI,
+    # 否则客户端 version_abi_ok 精确比对失败、新包不可见/不可装。
     if [ -f "$build_dir/libcpp_coverage.so" ]; then
         cp "$build_dir/libcpp_coverage.so" "$out_dir/"
-        # 注入 Linux ABI(Qt 大版本 + gcc, 与 plugin_host_abi() 一致),
-        # 覆盖源码 plugin.json 里可能的旧值
-        local qt_ver qt_major
-        qt_ver=$("$qmake_bin" -query QT_VERSION 2>/dev/null)
-        qt_major=${qt_ver%%.*}
-        if [ -n "$qt_major" ]; then
-            python3 - "$src_path/plugin.json" "$out_dir/plugin.json" "qt${qt_major}-gcc-x64" <<'EOF'
-import json, sys
-src, dst, abi = sys.argv[1], sys.argv[2], sys.argv[3]
-d = json.load(open(src))
-d["abi"] = abi
-json.dump(d, open(dst, "w"), ensure_ascii=False, indent=2)
-print(f"linux abi injected: {abi}", file=sys.stderr)
-EOF
-        else
-            cp "$src_path/plugin.json" "$out_dir/"
-        fi
-    else
-        cp "$src_path/plugin.json" "$out_dir/"
     fi
+    cp "$src_path/plugin.json" "$out_dir/"
     rm -rf "$build_dir"
     return 0
 }
